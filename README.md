@@ -1,4 +1,7 @@
+# Gaming Application REST API's (Java)
+
 ### Create League
+
    - Input: League name, description, and other relevant details.
    - Output: A new League entity stored in the database.
 ### Create Team
