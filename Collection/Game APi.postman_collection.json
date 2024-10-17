@@ -75,7 +75,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\"mobileNumber\":\"8576858625\",\r\n\"role\":5,\r\n\"otpEntered\":\"9617\"\r\n}",
+							"raw": "{\r\n\"mobileNumber\":\"9823456712\",\r\n\"role\":5,\r\n\"otpEntered\":\"8099\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -104,7 +104,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\"mobileNumber\":\"8576858625\"\r\n}",
+							"raw": "{\r\n\"mobileNumber\":\"9823456712\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -164,7 +164,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseurl}}/api/v1/teams/getTeamById?id=1",
+							"raw": "{{baseurl}}/api/v1/teams/getTeamById?id=8",
 							"host": [
 								"{{baseurl}}"
 							],
@@ -177,7 +177,7 @@
 							"query": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": "8"
 								}
 							]
 						}
@@ -211,7 +211,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Team Anil\",\r\n    \"league\": {\r\n        \"id\": 3\r\n    }\r\n}\r\n",
+							"raw": "{\r\n    \"name\": \"Team AAg Lucknow\",\r\n    \"league\": {\r\n        \"id\": 13\r\n    }\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -236,10 +236,10 @@
 				{
 					"name": "Delete Team",
 					"request": {
-						"method": "GET",
+						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{baseurl}}/api/v1/teams/deleteTeam?id=1",
+							"raw": "{{baseurl}}/api/v1/teams/deleteTeam?id=2",
 							"host": [
 								"{{baseurl}}"
 							],
@@ -252,7 +252,7 @@
 							"query": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": "2"
 								}
 							]
 						}
@@ -311,7 +311,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Spring Tournament 2024\",\r\n    \"startDate\": \"2025-03-01T09:00:00\",\r\n    \"endDate\": \"2025-03-30T18:00:00\",\r\n    \"status\": \"PLANNED\",\r\n    \"prizes\": [\r\n        {\r\n            \"prizeName\": \"Champion\",\r\n            \"amount\": 1500.0\r\n        },\r\n        {\r\n            \"prizeName\": \"Runner-up\",\r\n            \"amount\": 700.0\r\n        }\r\n    ]\r\n}\r\n",
+							"raw": "{\r\n    \"name\": \"Aag Tournament 2024\",\r\n    \"startDate\": \"2025-03-01T09:00:00\",\r\n    \"endDate\": \"2025-03-30T18:00:00\",\r\n    \"status\": \"ONGOING\"\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -356,10 +356,10 @@
 				{
 					"name": "Delete Tournament",
 					"request": {
-						"method": "GET",
+						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{baseurl}}/api/v1/tournaments/deleteTournament?id=1",
+							"raw": "{{baseurl}}/api/v1/tournaments/deleteTournament?id=3",
 							"host": [
 								"{{baseurl}}"
 							],
@@ -372,7 +372,7 @@
 							"query": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": "3"
 								}
 							]
 						}
@@ -382,10 +382,10 @@
 				{
 					"name": "End Tournament",
 					"request": {
-						"method": "GET",
+						"method": "PUT",
 						"header": [],
 						"url": {
-							"raw": "{{baseurl}}/api/v1/tournaments/endTournament?id=1",
+							"raw": "{{baseurl}}/api/v1/tournaments/endTournament?id=5",
 							"host": [
 								"{{baseurl}}"
 							],
@@ -398,7 +398,7 @@
 							"query": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": "5"
 								}
 							]
 						}
@@ -412,7 +412,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "[\r\n    {\r\n        \"tournamentId\": 4,\r\n        \"teamId\": 5,\r\n        \"prizeName\": \"Champion\",\r\n        \"amount\": 1500.0\r\n    },\r\n    {\r\n        \"tournamentId\": 2,\r\n        \"teamId\": 1,\r\n        \"prizeName\": \"Runner-up\",\r\n        \"amount\": 700.0\r\n    }\r\n]\r\n",
+							"raw": "[\r\n    {\r\n        \"tournamentId\": 19,\r\n        \"teamId\": 8,\r\n        \"prizeName\": \"Champion\",\r\n        \"amount\": 1500.0\r\n    }\r\n]\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -446,7 +446,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \" winter League\"\r\n}\r\n",
+							"raw": "{\r\n    \"name\": \" AAg league\"\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -537,7 +537,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{baseurl}}/api/v1/leagues/deleteLeague?id=10",
+							"raw": "{{baseurl}}/api/v1/leagues/deleteLeague?id=11",
 							"host": [
 								"{{baseurl}}"
 							],
@@ -550,7 +550,7 @@
 							"query": [
 								{
 									"key": "id",
-									"value": "10"
+									"value": "11"
 								}
 							]
 						}
@@ -615,7 +615,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"tournament\": {\r\n        \"id\": 4\r\n    },\r\n    \"customCustomer\": {\r\n        \"id\": 3502\r\n    },\r\n    \"team\": {\r\n        \"id\": 5\r\n    },\r\n    \"status\": \"active\"\r\n}\r\n",
+							"raw": "{\r\n    \"tournament\": {\r\n        \"id\": 19\r\n    },\r\n    \"customCustomer\": {\r\n        \"id\": 5702\r\n    },\r\n    \"team\": {\r\n        \"id\": 8\r\n    },\r\n    \"status\": \"active\"\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -695,7 +695,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"firstName\":\"anilkant\",\r\n    \"lastName\":\"mishra\",\r\n    \"emailAddress\":\"ab1h12@1gmail.com\"\r\n}",
+							"raw": "{\r\n    \"firstName\":\"anilkant\",\r\n    \"lastName\":\"mishra\",\r\n    \"emailAddress\":\"ab1h1256@1gmail.com\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -703,7 +703,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{baseurl}}/api/v1/customer/update?customerId=3502",
+							"raw": "{{baseurl}}/api/v1/customer/update?customerId=5702",
 							"host": [
 								"{{baseurl}}"
 							],
@@ -716,7 +716,7 @@
 							"query": [
 								{
 									"key": "customerId",
-									"value": "3502"
+									"value": "5702"
 								}
 							]
 						}
@@ -751,7 +751,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\"username\":\"ab11a123\"\r\n}",
+							"raw": "{\r\n\"username\":\"aaglucknow\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -759,7 +759,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{baseurl}}/api/v1/customer/update-username?customerId=2",
+							"raw": "{{baseurl}}/api/v1/customer/update-username?customerId=5702",
 							"host": [
 								"{{baseurl}}"
 							],
@@ -772,7 +772,7 @@
 							"query": [
 								{
 									"key": "customerId",
-									"value": "2"
+									"value": "5702"
 								}
 							]
 						}
@@ -794,7 +794,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{baseurl}}/api/v1/customer/create-or-update-password?customerId=2",
+							"raw": "{{baseurl}}/api/v1/customer/create-or-update-password?customerId=5702",
 							"host": [
 								"{{baseurl}}"
 							],
@@ -807,7 +807,7 @@
 							"query": [
 								{
 									"key": "customerId",
-									"value": "2"
+									"value": "5702"
 								}
 							]
 						}
@@ -817,10 +817,10 @@
 				{
 					"name": "Delete Customer",
 					"request": {
-						"method": "GET",
+						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{baseurl}}/api/v1/customer/delete?id=2",
+							"raw": "{{baseurl}}/api/v1/customer/delete?customerId=2",
 							"host": [
 								"{{baseurl}}"
 							],
@@ -832,7 +832,7 @@
 							],
 							"query": [
 								{
-									"key": "id",
+									"key": "customerId",
 									"value": "2"
 								}
 							]
@@ -852,7 +852,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"tournamentId\": 1,\r\n    \"team1Id\": 2,\r\n    \"team2Id\": 3,\r\n    \"matchDate\": \"2025-03-15T15:30:00\",\r\n    \"result\": \"team1 wins\" \r\n}\r\n",
+							"raw": "{\r\n    \"tournamentId\": 19,\r\n    \"team1Id\": 8,\r\n    \"team2Id\": 6,\r\n    \"matchDate\": \"2025-03-15T15:30:00\",\r\n    \"result\": \"team1 wins\" \r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -900,7 +900,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseurl}}/api/v1/match/getMatchById?id=1",
+							"raw": "{{baseurl}}/api/v1/match/getMatchById?id=10",
 							"host": [
 								"{{baseurl}}"
 							],
@@ -913,7 +913,7 @@
 							"query": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": "10"
 								}
 							]
 						}
@@ -928,7 +928,7 @@
 		"bearer": [
 			{
 				"key": "token",
-				"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI1NzUwYTRmZC1jYTk1LTRlMTMtYTljNy00ZGZiNTY5OGFkZjEiLCJpZCI6MzUwMiwicm9sZSI6NCwiaXBBZGRyZXNzIjoiMDowOjA6MDowOjA6MDoxIiwiaWF0IjoxNzI5MTM4ODkxLCJleHAiOjE3MjkxNzQ4OTF9.UmAFsS6nkbgifA3LC0YvRz1W9Z-krQCM5NOup9Kk9iI",
+				"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIxNzUzMTc5MC03OTQ4LTQ4NTEtYTJiZi1kNTFiOWUzZTUyODQiLCJpZCI6NTcwMiwicm9sZSI6NCwiaXBBZGRyZXNzIjoiMDowOjA6MDowOjA6MDoxIiwiaWF0IjoxNzI5MTY4NDU1LCJleHAiOjE3MjkyMDQ0NTV9.vsYuwz1Zn8RrJsH0X0-ZN1J3QM50LO9gMIn6GYMjUUI",
 				"type": "string"
 			}
 		]

@@ -72,7 +72,7 @@ public class TournamentService {
         return entityManager.find(Tournament.class, tournamentId);
     }
 
-    @Transactional
+    /*@Transactional
     public Tournament createTournament(Tournament tournament) {
         if (tournament.getStatus() == null ||
                 (!tournament.getStatus().equals(Constant.PLANNED) &&
@@ -88,7 +88,35 @@ public class TournamentService {
 
         entityManager.persist(tournament);
         return tournament;
+    }*/
+
+    @Transactional
+    public Tournament createTournament(Tournament tournament) {
+        if (tournament.getStatus() == null ||
+                (!tournament.getStatus().equals(Constant.PLANNED) &&
+                        !tournament.getStatus().equals(Constant.ONGOING))) {
+            throw new IllegalArgumentException("Tournament must be either ongoing or not started (PLANNED).");
+        }
+
+        if (tournament.getPrizes() != null) {
+            for (Prize prize : tournament.getPrizes()) {
+                prize.setTournament(tournament);
+
+                if (prize.getParticipation() == null) {
+                    Participation participation = new Participation();
+                    prize.setParticipation(participation);
+                }
+            }
+        }
+
+        // Persist the tournament, which will cascade to prizes
+        entityManager.persist(tournament);
+        return tournament;
     }
+
+
+
+
 
 
     @Transactional

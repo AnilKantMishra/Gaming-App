@@ -22,7 +22,7 @@ public class Prize {
     private Tournament tournament;
 
     @ManyToOne
-    @JoinColumn(name = "participation_id", nullable = false)
+    @JoinColumn(name = "participation_id", nullable = true)
     private Participation participation;
 
     private String prizeName;
