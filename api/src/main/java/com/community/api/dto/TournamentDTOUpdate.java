@@ -15,13 +15,12 @@ import java.util.List;
 @Setter
 @Getter
 @Component
-public class TournamentDTO {
+public class TournamentDTOUpdate {
     private Long id;
     private String name;
     private String status;
     private LocalDateTime startDate;
     private LocalDateTime endDate;
-
+    private LocalDateTime createdate;
     private List<PrizeDistributionDTO> prizeDistributions;
-
 }

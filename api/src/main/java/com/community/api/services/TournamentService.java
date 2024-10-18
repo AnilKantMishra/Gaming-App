@@ -38,7 +38,7 @@ public class TournamentService {
                                         ParticipationDTO participationDTO = new ParticipationDTO();
                                         participationDTO.setId(p.getId());
                                         participationDTO.setTournamentId(p.getTournament().getId());
-                                        participationDTO.setCustomerId(p.getCustomCustomer().getId());
+//                                        participationDTO.setCustomerId(p.getCustomCustomer().getId());
                                         participationDTO.setTeamId(p.getTeam().getId());
                                         participationDTO.setStatus(p.getStatus());
                                         return participationDTO;
@@ -66,32 +66,18 @@ public class TournamentService {
                 .collect(Collectors.toList());
     }
 
-
     @Transactional
     public Tournament getTournamentById(Long tournamentId) {
         return entityManager.find(Tournament.class, tournamentId);
     }
 
-    /*@Transactional
-    public Tournament createTournament(Tournament tournament) {
-        if (tournament.getStatus() == null ||
-                (!tournament.getStatus().equals(Constant.PLANNED) &&
-                        !tournament.getStatus().equals(Constant.ONGOING))) {
-            throw new IllegalArgumentException("Tournament must be either ongoing or not started (PLANNED).");
-        }
-
-        if (tournament.getPrizes() != null) {
-            for (Prize prize : tournament.getPrizes()) {
-                prize.setTournament(tournament);
-            }
-        }
-
-        entityManager.persist(tournament);
-        return tournament;
-    }*/
 
     @Transactional
     public Tournament createTournament(Tournament tournament) {
+        if (tournament == null) {
+            throw new IllegalArgumentException("Tournament cannot be null.");
+        }
+
         if (tournament.getStatus() == null ||
                 (!tournament.getStatus().equals(Constant.PLANNED) &&
                         !tournament.getStatus().equals(Constant.ONGOING))) {
@@ -101,34 +87,26 @@ public class TournamentService {
         if (tournament.getPrizes() != null) {
             for (Prize prize : tournament.getPrizes()) {
                 prize.setTournament(tournament);
-
-                if (prize.getParticipation() == null) {
-                    Participation participation = new Participation();
-                    prize.setParticipation(participation);
-                }
             }
         }
 
-        // Persist the tournament, which will cascade to prizes
         entityManager.persist(tournament);
         return tournament;
     }
 
 
 
-
-
-
-    @Transactional
-    public Participation joinTournament(Long tournamentId, CustomCustomer customCustomer) {
+@Transactional
+    public Participation joinTournament(Long tournamentId, Team team) {
         Tournament tournament = entityManager.find(Tournament.class, tournamentId);
         Participation participation = new Participation();
         participation.setTournament(tournament);
-        participation.setCustomCustomer(customCustomer);
+        participation.setTeam(team);
         participation.setStatus("active");
         entityManager.persist(participation);
         return participation;
     }
+
 
     @Transactional
     public void deleteTournament(Long tournamentId) {
@@ -145,7 +123,7 @@ public class TournamentService {
             throw new IllegalArgumentException("Tournament not found.");
         }
 
-        if (tournament.getStatus() != Constant.ONGOING) {
+        if (!tournament.getStatus().equals(Constant.ONGOING)) {
             throw new IllegalArgumentException("Tournament must be ongoing to be ended.");
         }
 
@@ -155,20 +133,30 @@ public class TournamentService {
     }
     @Transactional
     public MatchResponseDTO createMatch(MatchDTO matchRequest) {
+        // Validate incoming matchRequest
+        if (matchRequest == null) {
+            throw new IllegalArgumentException("Match request cannot be null.");
+        }
+
+        // Fetch the tournament
         Tournament tournament = entityManager.find(Tournament.class, matchRequest.getTournamentId());
-
-
         if (tournament == null) {
             throw new IllegalArgumentException("Invalid tournament ID.");
         }
 
+        // Create a new Match instance
         Match match = new Match();
         match.setTournament(tournament);
         match.setMatchDate(matchRequest.getMatchDate());
         match.setResult(matchRequest.getResult());
 
+        // Fetch teams and validate
         Long team1Id = matchRequest.getTeam1Id();
         Long team2Id = matchRequest.getTeam2Id();
+
+        if (team1Id == null || team2Id == null) {
+            throw new IllegalArgumentException("Team IDs cannot be null.");
+        }
 
         Team team1 = entityManager.find(Team.class, team1Id);
         Team team2 = entityManager.find(Team.class, team2Id);
@@ -180,12 +168,17 @@ public class TournamentService {
         match.setTeam1(team1);
         match.setTeam2(team2);
 
+        // Persist the match entity
         entityManager.persist(match);
 
+        // Create response DTO
         MatchResponseDTO createdMatchDTO = new MatchResponseDTO();
         createdMatchDTO.setId(match.getId());
         createdMatchDTO.setTournamentId(tournament.getId());
+        createdMatchDTO.setMatchDate(match.getMatchDate());
+        createdMatchDTO.setResult(match.getResult());
 
+        // Populate team DTOs
         TeamDTO team1DTO = new TeamDTO();
         team1DTO.setId(team1.getId());
         team1DTO.setName(team1.getName());
@@ -202,11 +195,10 @@ public class TournamentService {
 
         createdMatchDTO.setTeam1(team1DTO);
         createdMatchDTO.setTeam2(team2DTO);
-        createdMatchDTO.setMatchDate(match.getMatchDate());
-        createdMatchDTO.setResult(match.getResult());
 
         return createdMatchDTO;
     }
+
 
 /*    @Transactional
     public MatchDTO createMatch(MatchDTO matchRequest) {
@@ -254,9 +246,6 @@ public class TournamentService {
         }
     }*/
 
-
-
-
     @Transactional
     public void distributePrizes(PrizeDistributionDTO prizeDistribution) {
         // Find the tournament by ID
@@ -269,11 +258,10 @@ public class TournamentService {
                         "SELECT p FROM Participation p WHERE p.tournament.id = :tournamentId AND p.team.id = :teamId", Participation.class)
                 .setParameter("tournamentId", prizeDistribution.getTournamentId())
                 .setParameter("teamId", prizeDistribution.getTeamId())
-                .getSingleResult();
-
-        if (participation == null) {
-            throw new IllegalArgumentException("No participation record found for team ID " + prizeDistribution.getTeamId() + " in tournament ID " + prizeDistribution.getTournamentId());
-        }
+                .getResultList()
+                .stream()
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException("No participation record found for team ID " + prizeDistribution.getTeamId() + " in tournament ID " + prizeDistribution.getTournamentId()));
 
         Prize prize = new Prize();
         prize.setTournament(tournament);

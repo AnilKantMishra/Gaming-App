@@ -75,7 +75,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\"mobileNumber\":\"9823456712\",\r\n\"role\":5,\r\n\"otpEntered\":\"8099\"\r\n}",
+							"raw": "{\r\n\"mobileNumber\":\"9823456712\",\r\n\"role\":5,\r\n\"otpEntered\":\"9262\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -211,7 +211,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Team AAg Lucknow\",\r\n    \"league\": {\r\n        \"id\": 13\r\n    }\r\n}\r\n",
+							"raw": "{\r\n    \"name\": \"Team Jamtech Lucknow\",\r\n    \"league\": {\r\n        \"id\": 2\r\n    }\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -290,7 +290,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseurl}}/api/v1/tournaments/getTournamentById",
+							"raw": "{{baseurl}}/api/v1/tournaments/getTournamentById?id=1",
 							"host": [
 								"{{baseurl}}"
 							],
@@ -299,6 +299,12 @@
 								"v1",
 								"tournaments",
 								"getTournamentById"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
 							]
 						}
 					},
@@ -311,7 +317,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Aag Tournament 2024\",\r\n    \"startDate\": \"2025-03-01T09:00:00\",\r\n    \"endDate\": \"2025-03-30T18:00:00\",\r\n    \"status\": \"ONGOING\"\r\n}\r\n",
+							"raw": "{\r\n    \"name\": \"Aag Tournament 2024\",\r\n    \"startDate\": \"2025-03-01T09:00:00\",\r\n    \"endDate\": \"2025-03-30T18:00:00\",\r\n    \"status\": \"PLANNED\",\r\n    \"prizes\": [\r\n        {\r\n            \"prizeName\": \"Champion\",\r\n            \"amount\": 1500.0\r\n        },\r\n        {\r\n            \"prizeName\": \"Runner-up\",\r\n            \"amount\": 700.0\r\n        }\r\n    ]\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -338,6 +344,15 @@
 					"request": {
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"tournamentId\": 1,\r\n    \"teamId\": 1\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "{{baseurl}}/api/v1/tournaments/joinTournament",
 							"host": [
@@ -412,7 +427,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "[\r\n    {\r\n        \"tournamentId\": 19,\r\n        \"teamId\": 8,\r\n        \"prizeName\": \"Champion\",\r\n        \"amount\": 1500.0\r\n    }\r\n]\r\n",
+							"raw": "[\r\n    {\r\n        \"tournamentId\": 1,\r\n        \"teamId\": 1,\r\n        \"prizeName\": \"Champion\",\r\n        \"amount\": 1500.0\r\n    },\r\n    {\r\n        \"tournamentId\": 1,\r\n        \"teamId\": 2,\r\n        \"prizeName\": \"Runner-up\",\r\n        \"amount\": 700.0\r\n    }\r\n]\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -446,7 +461,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \" AAg league\"\r\n}\r\n",
+							"raw": "{\r\n    \"name\": \"Testing league\"\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -503,7 +518,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \" College League\"\r\n}\r\n",
+							"raw": "{\r\n    \"name\": \" AAg League Lucknow\"\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -537,7 +552,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{baseurl}}/api/v1/leagues/deleteLeague?id=11",
+							"raw": "{{baseurl}}/api/v1/leagues/deleteLeague?id=5",
 							"host": [
 								"{{baseurl}}"
 							],
@@ -550,7 +565,7 @@
 							"query": [
 								{
 									"key": "id",
-									"value": "11"
+									"value": "5"
 								}
 							]
 						}
@@ -615,7 +630,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"tournament\": {\r\n        \"id\": 19\r\n    },\r\n    \"customCustomer\": {\r\n        \"id\": 5702\r\n    },\r\n    \"team\": {\r\n        \"id\": 8\r\n    },\r\n    \"status\": \"active\"\r\n}\r\n",
+							"raw": "{\r\n    \"tournament\": {\r\n        \"id\": 1\r\n    },\r\n    \"customCustomer\": {\r\n        \"id\": 6502\r\n    },\r\n    \"team\": {\r\n        \"id\": 2\r\n    },\r\n    \"status\": \"active\"\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -852,7 +867,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"tournamentId\": 19,\r\n    \"team1Id\": 8,\r\n    \"team2Id\": 6,\r\n    \"matchDate\": \"2025-03-15T15:30:00\",\r\n    \"result\": \"team1 wins\" \r\n}\r\n",
+							"raw": "{\r\n    \"tournamentId\": 1,\r\n    \"team1Id\": 1,\r\n    \"team2Id\": 2,\r\n    \"matchDate\": \"2025-03-15T15:30:00\",\r\n    \"result\": \"team1 wins\" \r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -928,7 +943,7 @@
 		"bearer": [
 			{
 				"key": "token",
-				"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIxNzUzMTc5MC03OTQ4LTQ4NTEtYTJiZi1kNTFiOWUzZTUyODQiLCJpZCI6NTcwMiwicm9sZSI6NCwiaXBBZGRyZXNzIjoiMDowOjA6MDowOjA6MDoxIiwiaWF0IjoxNzI5MTY4NDU1LCJleHAiOjE3MjkyMDQ0NTV9.vsYuwz1Zn8RrJsH0X0-ZN1J3QM50LO9gMIn6GYMjUUI",
+				"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJmNDZjMzU3MC1iMjI0LTQ5NjMtYWJlZi0wNTYyOTY4MmNjZDciLCJpZCI6NjUwMiwicm9sZSI6NCwiaXBBZGRyZXNzIjoiMDowOjA6MDowOjA6MDoxIiwiaWF0IjoxNzI5MjI1NDM5LCJleHAiOjE3MjkyNjE0Mzl9.guFOKjdVfHHpgmR3wDVPwXdfzGJgEw2_wzkM1rEtg_M",
 				"type": "string"
 			}
 		]
