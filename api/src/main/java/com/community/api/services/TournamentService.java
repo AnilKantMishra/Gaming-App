@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -112,9 +113,22 @@ public class TournamentService {
     public void deleteTournament(Long tournamentId) {
         Tournament tournament = entityManager.find(Tournament.class, tournamentId);
         if (tournament != null) {
+            // First, delete associated matches
+            Query query = entityManager.createQuery("DELETE FROM Match m WHERE m.tournament.id = :tournamentId");
+            query.setParameter("tournamentId", tournamentId);
+            query.executeUpdate();
+
+            // Now, delete the tournament
             entityManager.remove(tournament);
         }
     }
+
+/*    public void deleteTournament(Long tournamentId) {
+        Tournament tournament = entityManager.find(Tournament.class, tournamentId);
+        if (tournament != null) {
+            entityManager.remove(tournament);
+        }
+    }*/
 
     @Transactional
     public Tournament endTournament(Long tournamentId) {

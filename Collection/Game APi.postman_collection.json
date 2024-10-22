@@ -75,7 +75,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\"mobileNumber\":\"9823456712\",\r\n\"role\":5,\r\n\"otpEntered\":\"9262\"\r\n}",
+							"raw": "{\r\n\"mobileNumber\":\"8576858549\",\r\n\"role\":5,\r\n\"otpEntered\":\"7738\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -104,7 +104,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\"mobileNumber\":\"9823456712\"\r\n}",
+							"raw": "{\r\n\"mobileNumber\":\"8576858549\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -136,7 +136,7 @@
 			]
 		},
 		{
-			"name": "Team Api",
+			"name": "Team Api (2)",
 			"item": [
 				{
 					"name": "Get All Teams",
@@ -262,7 +262,7 @@
 			]
 		},
 		{
-			"name": "Tournament Api",
+			"name": "Tournament Api (3)",
 			"item": [
 				{
 					"name": "Get Active Tournaments",
@@ -317,7 +317,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Aag Tournament 2024\",\r\n    \"startDate\": \"2025-03-01T09:00:00\",\r\n    \"endDate\": \"2025-03-30T18:00:00\",\r\n    \"status\": \"PLANNED\",\r\n    \"prizes\": [\r\n        {\r\n            \"prizeName\": \"Champion\",\r\n            \"amount\": 1500.0\r\n        },\r\n        {\r\n            \"prizeName\": \"Runner-up\",\r\n            \"amount\": 700.0\r\n        }\r\n    ]\r\n}\r\n",
+							"raw": "{\r\n    \"name\": \"Lucknow Cricket Tournament 2024\",\r\n    \"startDate\": \"2025-03-01T09:00:00\",\r\n    \"endDate\": \"2025-03-30T18:00:00\",\r\n    \"status\": \"PLANNED\",\r\n    \"prizes\": [\r\n        {\r\n            \"prizeName\": \"Champion\",\r\n            \"amount\": 1500.0\r\n        },\r\n        {\r\n            \"prizeName\": \"Runner-up\",\r\n            \"amount\": 700.0\r\n        },\r\n                {\r\n            \"prizeName\": \"Runner-up2\",\r\n            \"amount\": 100.0\r\n        }\r\n    ]\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -374,7 +374,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{baseurl}}/api/v1/tournaments/deleteTournament?id=3",
+							"raw": "{{baseurl}}/api/v1/tournaments/deleteTournament?id=1",
 							"host": [
 								"{{baseurl}}"
 							],
@@ -387,7 +387,7 @@
 							"query": [
 								{
 									"key": "id",
-									"value": "3"
+									"value": "1"
 								}
 							]
 						}
@@ -452,7 +452,7 @@
 			]
 		},
 		{
-			"name": "League",
+			"name": "League (1)",
 			"item": [
 				{
 					"name": "create league",
@@ -575,7 +575,7 @@
 			]
 		},
 		{
-			"name": "Participant",
+			"name": "Participant (4)",
 			"item": [
 				{
 					"name": "Get All Participations",
@@ -858,7 +858,7 @@
 			]
 		},
 		{
-			"name": "Match",
+			"name": "Match (6)",
 			"item": [
 				{
 					"name": "Create Match",
@@ -936,6 +936,48 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "File",
+			"item": [
+				{
+					"name": "New Request",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/Anil-Mishra/Desktop/photo-1593005510509-d05b264f1c9c.jfif"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseurl}}/api/v1/image/upload",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"image",
+								"upload"
+							],
+							"query": [
+								{
+									"key": "file",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	],
 	"auth": {
@@ -943,7 +985,7 @@
 		"bearer": [
 			{
 				"key": "token",
-				"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJmNDZjMzU3MC1iMjI0LTQ5NjMtYWJlZi0wNTYyOTY4MmNjZDciLCJpZCI6NjUwMiwicm9sZSI6NCwiaXBBZGRyZXNzIjoiMDowOjA6MDowOjA6MDoxIiwiaWF0IjoxNzI5MjI1NDM5LCJleHAiOjE3MjkyNjE0Mzl9.guFOKjdVfHHpgmR3wDVPwXdfzGJgEw2_wzkM1rEtg_M",
+				"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIzM2Y2ODY5OS04ZWFmLTQ0ZGMtOGUyNS04OWY0YjI0YTljZDAiLCJpZCI6ODIwNiwicm9sZSI6NCwiaXBBZGRyZXNzIjoiMDowOjA6MDowOjA6MDoxIiwiaWF0IjoxNzI5NTc1NTA2LCJleHAiOjE3Mjk2MTE1MDZ9.gAkYznQKoMNW2xOID6qrALWJnNZlyIu0VgP1DDp8Uz4",
 				"type": "string"
 			}
 		]
